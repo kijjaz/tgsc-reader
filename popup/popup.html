@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TGSC Perfumery Companion</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <div>
+          <h1>TGSC Perfumery Companion</h1>
+          <span class="sub">4,350+ Materials, Fragrance Palettes & Formulas</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-open-sidepanel" class="btn-icon-header" title="Open as Chrome Side Panel" style="background: #0284c7; color: #fff; border-color: #0369a1;">
+          <span>◨</span> Side Panel
+        </button>
+        <button id="btn-open-fulltab" class="btn-icon-header" title="Open Fullscreen Studio in New Tab">
+          <span>⤢</span> Fullscreen Tab
+        </button>
+      </div>
+    </header>
+
+    <!-- Active Tab Context Banner -->
+    <div id="active-tab-banner" class="active-tab-banner hidden"></div>
+
+    <!-- Search & Filters -->
+    <div class="search-section">
+      <input type="text" id="search-input" placeholder="Search by Trade Name, Chemical, CAS, ID (rw/ab/fr/fl/dm), or Facet..." autofocus />
+      
+      <!-- Category Tabs -->
+      <div class="category-tabs">
+        <button class="cat-tab active" data-type="all">All (<span id="count-all">0</span>)</button>
+        <button class="cat-tab" data-type="raw_material">Materials (<span id="count-rm">0</span>)</button>
+        <button class="cat-tab" data-type="natural">Naturals (<span id="count-nat">0</span>)</button>
+        <button class="cat-tab" data-type="fragrance">Fragrances (<span id="count-fr">0</span>)</button>
+        <button class="cat-tab" data-type="flavor">Flavors (<span id="count-fl">0</span>)</button>
+        <button class="cat-tab" data-type="demo_formula">Formulas (<span id="count-demo">0</span>)</button>
+      </div>
+
+      <!-- Student Tier & Volatility Filters -->
+      <div class="sub-filters">
+        <div class="tier-pills">
+          <span class="filter-label">Tiers:</span>
+          <button class="tier-pill active" data-level="all">All</button>
+          <button class="tier-pill pill-l1" data-level="1">L1 Core</button>
+          <button class="tier-pill pill-l2" data-level="2">L2 Inter</button>
+          <button class="tier-pill pill-l3" data-level="3">L3 Spec</button>
+        </div>
+
+        <div class="vol-pills">
+          <button class="vol-chip active" data-vol="all">All Notes</button>
+          <button class="vol-chip" data-vol="Top Note">Top</button>
+          <button class="vol-chip" data-vol="Heart Note">Heart</button>
+          <button class="vol-chip" data-vol="Base Note">Base</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <main class="material-list" id="material-list">
+      <!-- Dynamic list injected via popup.js -->
+    </main>
+
+    <!-- Detail & Scaler Modal Studio -->
+    <div class="detail-modal hidden" id="detail-modal">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-content" id="modal-content">
+        <!-- Dynamic modal content injected via popup.js -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <span>Tip: Click <strong>"Inspect Material"</strong> or <strong>"Scale Formula"</strong> to view in-app &bull; Open Fullscreen Tab for full-width studio</span>
+    </footer>
+  </div>
+
+  <script src="../content/formula_scaler.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

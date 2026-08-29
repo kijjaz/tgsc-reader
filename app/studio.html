@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TGSC Perfumery Studio - Standalone Student Workspace</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <div class="studio-container">
+    <!-- Top Bar -->
+    <header class="studio-topbar">
+      <div class="brand-wrap">
+        <h1 class="brand-title">TGSC Perfumery Studio</h1>
+        <span class="brand-tag">Student Organ & Scent Palette Engine</span>
+      </div>
+
+      <!-- Live TGSC Tab Status -->
+      <div class="live-sync-badge" id="live-sync-badge">
+        <span class="sync-dot"></span>
+        <span class="sync-text" id="sync-text">Checking active TGSC tab...</span>
+        <button id="btn-open-tgsc" class="btn-sync-action hidden" title="Open this page in browser tab">Open in TGSC</button>
+      </div>
+
+      <!-- Live Crawler Bar -->
+      <div class="crawler-bar">
+        <input type="text" id="crawl-input" placeholder="Crawl any TGSC URL, ID (rw/ab/fr/fl/dm), or CAS..." />
+        <button id="btn-crawl" class="btn-crawl">Crawl & Inspect</button>
+      </div>
+    </header>
+
+    <!-- Main 3-Column Studio Layout -->
+    <div class="studio-body">
+      <!-- Left Panel: Library & Organ Filter -->
+      <aside class="studio-sidebar">
+        <div class="sidebar-search">
+          <input type="text" id="lib-search" placeholder="Search 4,350+ items..." />
+        </div>
+
+        <div class="sidebar-categories">
+          <button class="cat-btn active" data-cat="all">All (<span id="count-all">0</span>)</button>
+          <button class="cat-btn" data-cat="raw_material">Materials (<span id="count-rm">0</span>)</button>
+          <button class="cat-btn" data-cat="natural">Naturals (<span id="count-nat">0</span>)</button>
+          <button class="cat-btn" data-cat="fragrance">Fragrances (<span id="count-fr">0</span>)</button>
+          <button class="cat-btn" data-cat="flavor">Flavors (<span id="count-fl">0</span>)</button>
+          <button class="cat-btn" data-cat="demo_formula">Formulas (<span id="count-demo">0</span>)</button>
+        </div>
+
+        <div class="sidebar-subfilters">
+          <div class="tier-filter-row">
+            <span class="filter-lbl">Tiers:</span>
+            <button class="tier-chip active" data-tier="all">All</button>
+            <button class="tier-chip chip-l1" data-tier="1">L1 Core</button>
+            <button class="tier-chip chip-l2" data-tier="2">L2 Inter</button>
+            <button class="tier-chip chip-l3" data-tier="3">L3 Spec</button>
+          </div>
+
+          <div class="vol-filter-row">
+            <button class="vol-btn active" data-vol="all">All Notes</button>
+            <button class="vol-btn" data-vol="Top Note">Top</button>
+            <button class="vol-btn" data-vol="Heart Note">Heart</button>
+            <button class="vol-btn" data-vol="Base Note">Base</button>
+          </div>
+        </div>
+
+        <div class="sidebar-list" id="sidebar-list">
+          <!-- Populated by studio.js -->
+        </div>
+      </aside>
+
+      <!-- Center Panel: 3-Pillar Item Inspector & Scaler Studio -->
+      <main class="studio-main" id="studio-main">
+        <div class="empty-state" id="empty-state">
+          <h2>Select any material, fragrance palette, or formula to inspect</h2>
+          <p>Or enter a TGSC URL / ID above to live-crawl it in the background.</p>
+        </div>
+        <div class="inspector-content hidden" id="inspector-content">
+          <!-- Injected via studio.js -->
+        </div>
+      </main>
+
+      <!-- Right Panel: Scent Connections & Co-occurrence Network -->
+      <aside class="studio-network" id="studio-network">
+        <div class="network-header">
+          <h3>Connected Scent Network</h3>
+          <span class="network-sub">Candidate Blenders & Co-occurrences</span>
+        </div>
+        <div class="network-body" id="network-body">
+          <p class="network-empty">Select an item to view connected scent blenders and related palettes.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../content/formula_scaler.js"></script>
+  <script src="studio.js"></script>
+</body>
+</html>
