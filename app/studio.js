@@ -550,12 +550,63 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // 7. Right Network Panel Rendering
   function renderNetworkPanel(item, blenders, uses) {
-    if (blenders.length === 0 && uses.length === 0) {
+    // Check for student database inventory match
+    const candidateNames = [item.name, item.chemical_name, ...(item.synonyms || [])].filter(Boolean);
+    const studentMatches = [];
+    const seenSkus = new Set();
+
+    if (item.cas) {
+      studentMaterials.forEach(m => {
+        if (m.cas && m.cas.trim() === item.cas.trim() && !seenSkus.has(m.sku)) {
+          seenSkus.add(m.sku);
+          studentMatches.push(m);
+        }
+      });
+    }
+
+    const cleanNames = candidateNames.map(n => n.toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim()).filter(n => n.length > 2);
+    studentMaterials.forEach(m => {
+      if (seenSkus.has(m.sku)) return;
+      const mNameClean = (m.name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+      const mFullClean = (m.student_material_name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+      const mOffClean = (m.official_name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+      const mSyns = (m.synonyms || []).map(s => s.toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim());
+
+      for (const target of cleanNames) {
+        if (mNameClean === target || mOffClean === target || mFullClean.includes(target) || mSyns.includes(target)) {
+          seenSkus.add(m.sku);
+          studentMatches.push(m);
+          break;
+        }
+      }
+    });
+
+    let studentBoxHtml = '';
+    if (studentMatches.length > 0) {
+      studentBoxHtml = `
+        <div class="network-student-box">
+          <div class="network-student-header">In Your Student Database (${studentMatches.length})</div>
+          ${studentMatches.map(m => `
+            <div class="network-student-mat">
+              <div class="network-student-name">${m.student_material_name || m.name}</div>
+              <div class="network-student-meta">
+                ${m.level ? `<span class="tag-l${m.level}" style="font-size: 8px;">L${m.level}</span>` : ''}
+                <span style="color: #60a5fa; font-family: monospace;">${m.sku}</span>
+                <span>${(m.suppliers && m.suppliers[0]) || 'Database'}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    if (blenders.length === 0 && uses.length === 0 && studentMatches.length === 0) {
       networkBody.innerHTML = `<p class="network-empty">No external connections discovered for this item.</p>`;
       return;
     }
 
     networkBody.innerHTML = `
+      ${studentBoxHtml}
       <div style="font-size: 11px; color: #94a3b8; margin-bottom: 4px;">Direct Blenders: <strong>${blenders.length}</strong> | Scent Themes: <strong>${uses.length}</strong></div>
       <div style="display: flex; flex-direction: column; gap: 6px;">
         ${uses.slice(0, 6).map(u => `

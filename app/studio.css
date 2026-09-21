@@ -605,6 +605,50 @@ html, body {
   color: #94a3b8;
 }
 
+.network-student-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.network-student-header {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #34d399;
+  letter-spacing: 0.5px;
+}
+
+.network-student-mat {
+  background: #0f172a;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 6px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.network-student-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.network-student-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+
 /* Formula Scaler Elements */
 .scaler-bar {
   display: flex;

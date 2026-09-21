@@ -226,6 +226,49 @@ document.addEventListener('DOMContentLoaded', async () => {
       const formulaCount = (item.used_in_formula_ids || []).length;
       const pairingsCount = ((item.pairings && item.pairings['1']) || []).length;
 
+      // Find student database matches
+      const studentMatches = [];
+      const seenSkus = new Set();
+      if (item.cas) {
+        studentMaterials.forEach(m => {
+          if (m.cas && m.cas.trim() === item.cas.trim() && !seenSkus.has(m.sku)) {
+            seenSkus.add(m.sku);
+            studentMatches.push(m);
+          }
+        });
+      }
+      const candidateNames = [item.name, item.chemical_name, ...(item.synonyms || [])].filter(Boolean)
+        .map(n => n.toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim()).filter(n => n.length > 2);
+      studentMaterials.forEach(m => {
+        if (seenSkus.has(m.sku)) return;
+        const mNameClean = (m.name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+        const mFullClean = (m.student_material_name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+        const mOffClean = (m.official_name || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
+        const mSyns = (m.synonyms || []).map(s => s.toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim());
+
+        for (const target of candidateNames) {
+          if (mNameClean === target || mOffClean === target || mFullClean.includes(target) || mSyns.includes(target)) {
+            seenSkus.add(m.sku);
+            studentMatches.push(m);
+            break;
+          }
+        }
+      });
+
+      const dbMatchPills = studentMatches.length > 0 ? `
+        <div style="margin-top: 6px; padding: 6px 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px;">
+          <div style="font-size: 10px; font-weight: 700; color: #34d399; text-transform: uppercase; margin-bottom: 4px;">In Student Database:</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            ${studentMatches.map(m => `
+              <div style="font-size: 12px; font-weight: 600; color: #f8fafc; display: flex; align-items: center; justify-content: space-between;">
+                <span>${m.student_material_name || m.name}</span>
+                <span style="font-size: 10px; color: #93c5fd; font-family: monospace;">${m.sku}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
+
       activeTabBanner.innerHTML = `
         <div class="active-tab-card">
           <div class="active-tab-header">
@@ -240,6 +283,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           ${item.synonyms && item.synonyms.length > 1 ? `
             <div class="active-tab-synonyms">Synonyms: ${item.synonyms.slice(0, 4).join(', ')}</div>
           ` : ''}
+          ${dbMatchPills}
           
           <div class="active-tab-context-nav">
             ${formulaCount > 0 ? `

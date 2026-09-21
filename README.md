@@ -22,13 +22,19 @@ Every material or scent palette on TGSC is structured into:
 * Stays open continuously as you browse TGSC.
 * Auto-syncs in real-time as you click between materials and formulas on `thegoodscentscompany.com`.
 
-### 3. ⚖️ Interactive Formula Scaler Studio
-* Real precision batch scaler for demo formulas (`5g`, `10g`, `20g`, `50g` presets or custom weight).
-* **Organ Gap Analysis**: Calculates exactly which ingredients you own in Level 1, 2, or 3.
-* **Student Skeleton Mode**: Auto-scales only the materials in your organ to 100%.
-* 1-Click **Download CSV** and **Copy Markdown** table.
+### 3. 🎯 In-Page Student Inventory & Trade Name Card
+* When browsing any material page (e.g. `rw1020611.html` for patchouli ethanone / Iso E Super), an unobtrusive floating card docks on the right.
+* Displays the exact matching material name, vendor/supplier (`PerfumersWorld`, `SimpleScentsDIY`, etc.), organ tier badge (`L1`, `L2`, `L3`), and SKU code from your student organ database.
+* **Instant Organ Substitutions (#1)**: If a material is not in your inventory, it automatically calculates top replacements from your organ based on shared sensory facets (+3), family match (+4), and volatility (+2).
 
-### 4. 🕷️ Headless Live Crawler
+### 4. ⚖️ In-Page Live Demo Formula Scaler (#5)
+* On any TGSC demo formula page (`/demos/dm...`), an interactive batch control bar injects directly above the formula table.
+* **Live Batch Weight Scaling**: Change the target weight (e.g. `10g`) and watch the table update in real time with calculated grams per ingredient.
+* **Student Skeleton Mode**: 1-click toggle between Full Formula and a normalized 100% Student Skeleton (scaling only materials you own).
+* **Missing Material Detection & Substitutions**: Highlights missing ingredients and offers 1-click substitute suggestions from your organ.
+* **Instant Export**: 1-click **Copy Markdown** table or **Export CSV** formatted for lab notebooks and digital scales.
+
+### 5. 🕷️ Headless Live Crawler
 * Type or paste any TGSC URL, ID (e.g. `rw1020611`, `fr1109513`), or CAS number in the studio topbar to live-crawl and parse it in the background in milliseconds (no CORS restrictions).
 
 ---

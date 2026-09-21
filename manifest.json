@@ -41,6 +41,7 @@
         "*://thegoodscentscompany.com/*"
       ],
       "js": [
+        "content/formula_scaler.js",
         "content/content.js"
       ],
       "css": [

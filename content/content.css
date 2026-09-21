@@ -153,3 +153,373 @@
 .tgsc-highlight-row {
   background: rgba(16, 185, 129, 0.12) !important;
 }
+
+/* In-Page Right-Docked Floating Student Organ Card */
+.tgsc-side-card {
+  position: fixed;
+  top: 70px;
+  right: 16px;
+  width: 310px;
+  max-width: calc(100vw - 32px);
+  background: #0b0f19;
+  border: 1px solid #1e293b;
+  border-top: 3px solid #10b981;
+  border-radius: 10px;
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 2147483646;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #f1f5f9;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.tgsc-side-card.collapsed .tgsc-side-body {
+  display: none;
+}
+
+.tgsc-side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.tgsc-side-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.tgsc-side-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tgsc-side-btn-min {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.tgsc-side-btn-min:hover {
+  background: #1f2937;
+  color: #f8fafc;
+}
+
+.tgsc-side-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tgsc-side-tgsc-source {
+  font-size: 11px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px dashed #334155;
+  line-height: 1.4;
+}
+
+.tgsc-side-tgsc-source strong {
+  color: #f8fafc;
+}
+
+.tgsc-side-match-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tgsc-side-match-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #34d399;
+  letter-spacing: 0.5px;
+}
+
+.tgsc-side-mat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tgsc-side-mat-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.tgsc-side-mat-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.tgsc-side-mat-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.tgsc-side-vendor-tag {
+  background: #1e3a8a;
+  color: #93c5fd;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.tgsc-side-sku-tag {
+  color: #cbd5e1;
+  font-family: monospace;
+}
+
+.tgsc-side-no-match {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.tgsc-side-btn-studio {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+
+.tgsc-side-btn-studio:hover {
+  background: #1d4ed8;
+}
+
+/* In-Page Live Demo Formula Scaler Bar */
+.tgsc-live-formula-bar {
+  background: #0b0f19;
+  border: 1px solid #1e293b;
+  border-top: 3px solid #38bdf8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 12px 0 10px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+}
+
+.tgsc-lfb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tgsc-lfb-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tgsc-lfb-stats {
+  font-size: 11px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tgsc-lfb-stats strong {
+  color: #34d399;
+}
+
+.tgsc-lfb-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tgsc-lfb-input-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.tgsc-lfb-input-box label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.tgsc-lfb-input-box input {
+  width: 50px;
+  background: transparent;
+  border: none;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: monospace;
+  outline: none;
+  text-align: right;
+}
+
+.tgsc-lfb-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tgsc-lfb-btn:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.tgsc-lfb-btn.active {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.tgsc-lfb-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+/* In-Page Formula Scaled Rows & Column */
+.tgsc-scale-cell {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 6px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tgsc-scale-ok {
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 3px;
+}
+
+.tgsc-scale-missing {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 3px;
+}
+
+/* Substitution Suggestion Chips */
+.tgsc-sub-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #1e1b4b;
+  border: 1px solid #4338ca;
+  color: #c7d2fe;
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-left: 6px;
+  vertical-align: middle;
+  line-height: 1.2;
+  transition: all 0.15s;
+}
+
+.tgsc-sub-chip:hover {
+  background: #312e81;
+  color: #ffffff;
+  border-color: #6366f1;
+}
+
+/* Substitution Drawer / Modal on Right Side */
+.tgsc-sub-box {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+}
+
+.tgsc-sub-box-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #a5b4fc;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tgsc-sub-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #1e293b;
+  font-size: 11px;
+}
+
+.tgsc-sub-item:last-child {
+  border-bottom: none;
+}
+
+.tgsc-sub-name {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.tgsc-sub-meta {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+
